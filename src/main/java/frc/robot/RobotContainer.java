@@ -5,10 +5,10 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.ShootCube;
 import frc.robot.subsystems.RomiDrivetrain;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -23,8 +23,6 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final RomiDrivetrain m_romiDrivetrain = new RomiDrivetrain();
   private final XboxController m_controller = new XboxController(0);
-
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_romiDrivetrain);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -45,6 +43,7 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    new JoystickButton(m_controller, XboxController.Button.kA.value).whileTrue(new ShootCube(/*shooter */, 0.5));
   }
 
   /**
@@ -52,9 +51,5 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    // An ExampleCommand will run in autonomous
-    return m_autoCommand;
-  }
 
 }

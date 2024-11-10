@@ -5,10 +5,13 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.MoveElevator;
 import frc.robot.commands.ShootCube;
+import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.RomiDrivetrain;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.subsystems.Shooter;
 
 /**
@@ -23,7 +26,9 @@ import frc.robot.subsystems.Shooter;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final RomiDrivetrain m_romiDrivetrain = new RomiDrivetrain();
-  private final XboxController m_controller = new XboxController(0);
+  private final XboxController m_driver = new XboxController(0);
+  private final XboxController m_gunner = new XboxController(1);
+  private final Elevator m_elevator = new Elevator();
   private final Shooter m_shooter = new Shooter();
 
   /**
@@ -31,7 +36,7 @@ public class RobotContainer {
    */
   public RobotContainer() {
     m_romiDrivetrain.setDefaultCommand(new RunCommand(
-        () -> m_romiDrivetrain.arcadeDrive(m_controller.getLeftY(), m_controller.getRightX()), m_romiDrivetrain));
+        () -> m_romiDrivetrain.arcadeDrive(m_driver.getLeftY(), m_driver.getRightX()), m_romiDrivetrain));
     configureButtonBindings();
   }
 
@@ -45,7 +50,8 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    new JoystickButton(m_controller, XboxController.Button.kA.value).whileTrue(new ShootCube(m_shooter, 0.5));
+    new JoystickButton(m_driver, XboxController.Button.kA.value).whileTrue(new ShootCube(m_shooter, 0.5));
+    new Trigger(() -> Math.abs(m_gunner.getLeftY()) > 0.2).whileTrue(new MoveElevator(m_elevator, m_gunner.getLeftY())); 
   }
 
   /**

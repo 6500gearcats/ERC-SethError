@@ -51,6 +51,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     new JoystickButton(m_driver, XboxController.Button.kA.value).whileTrue(new ShootCube(m_shooter, 0.5));
+    new JoystickButton(m_driver, XboxController.Button.kY.value).whileTrue(new ShootCube(m_shooter, -0.5));
     new Trigger(() -> Math.abs(m_gunner.getLeftY()) > 0.2).whileTrue(new MoveElevator(m_elevator, m_gunner.getLeftY())); 
   }
 

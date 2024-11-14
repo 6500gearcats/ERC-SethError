@@ -7,12 +7,16 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter extends SubsystemBase {
   private Spark m_shooterMotor = new Spark(Constants.ShooterConstants.kShooterMotorPort);
 
+  double m_simSpeed;
+
   /** Creates a new Shooter. */
   public Shooter() {
+    m_simSpeed = 0;
   }
 
   public void setSpeed(double speed) {
@@ -22,5 +26,6 @@ public class Shooter extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Shooter Speed", m_simSpeed);
   }
 }

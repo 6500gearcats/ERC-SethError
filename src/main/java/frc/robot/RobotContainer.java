@@ -53,6 +53,7 @@ public class RobotContainer {
     new JoystickButton(m_controller, XboxController.Button.kY.value).whileTrue(new ShootCube(m_shooter, -0.5));
     // Current test multiplier is in place to prevent the elevator from moving too fast
     new Trigger(() -> m_controller.getRightTriggerAxis() > 0.2).whileTrue(new MoveElevator(m_elevator, m_controller.getRightTriggerAxis() * 0.2));
+    new Trigger(() -> m_controller.getLeftTriggerAxis() > 0.2).whileTrue(new MoveElevator(m_elevator, m_controller.getLeftTriggerAxis() * -0.2));
   }
 
   /**

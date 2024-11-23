@@ -19,14 +19,24 @@ public class Autonomous extends SequentialCommandGroup {
   public Autonomous(Elevator theElevator, RomiDrivetrain theRomiDrivetrain, Shooter theShooter) {
 
     addCommands(
-      //TODO: add real numbers
-        new ShootCube(theShooter, 4).withTimeout(1),
+      // TODO: Add Real Numbers
+
+      // Shoot the cube to the research station
+        new ShootCube(theShooter, 1).withTimeout(1),
+
+      // Move the elevator back down and turn around at the same time
         new ParallelDeadlineGroup(new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, 0.5), theRomiDrivetrain),
-            new MoveElevator(theElevator, -2)).withTimeout(2),
-        new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0,0.5)).withTimeout(2),
+            new MoveElevator(theElevator, -1)).withTimeout(2),
+
+      // Run forward out of the robots zone
+        new RunCommand(() -> theRomiDrivetrain.arcadeDrive(1,0)).withTimeout(2),
+
+      // Turn to the left
+        new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, .5), theRomiDrivetrain).withTimeout(2),
+
+      // Runs the robot forward and runs the intake
         new ParallelDeadlineGroup(new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, 0.5), theRomiDrivetrain),
-            new ShootCube(theShooter, -1)),
-        new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, 0), theRomiDrivetrain)
+            new ShootCube(theShooter, -1))
 
     );
 

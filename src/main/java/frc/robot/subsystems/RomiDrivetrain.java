@@ -7,10 +7,13 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import edu.wpi.first.wpilibj.romi.RomiGyro;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class RomiDrivetrain extends SubsystemBase {
+  private final RomiGyro m_gyro = new RomiGyro();
+
   private static final double kCountsPerRevolution = 1440.0;
   private static final double kWheelDiameterInch = 2.75591; // 70 mm
 
@@ -54,6 +57,38 @@ public class RomiDrivetrain extends SubsystemBase {
 
   public double getRightDistanceInch() {
     return m_rightEncoder.getDistance();
+  }
+
+  /**
+   * Current angle of the Romi around the X-axis.
+   *
+   * @return The current angle of the Romi in degrees
+   */
+  public double getGyroAngleX() {
+    return m_gyro.getAngleX();
+  }
+
+  /**
+   * Current angle of the Romi around the Y-axis.
+   *
+   * @return The current angle of the Romi in degrees
+   */
+  public double getGyroAngleY() {
+    return m_gyro.getAngleY();
+  }
+
+  /**
+   * Current angle of the Romi around the Z-axis.
+   *
+   * @return The current angle of the Romi in degrees
+   */
+  public double getGyroAngleZ() {
+    return m_gyro.getAngleZ();
+  }
+
+  /** Reset the gyro. */
+  public void resetGyro() {
+    m_gyro.reset();
   }
 
   @Override

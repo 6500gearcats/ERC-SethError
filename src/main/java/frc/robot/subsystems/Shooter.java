@@ -6,10 +6,12 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import edu.wpi.first.wpilibj.motorcontrol.PWMMotorController;
+import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 
 public class Shooter extends SubsystemBase {
-  private Spark m_shooterMotor = new Spark(Constants.ShooterConstants.kShooterMotorPort);
+  private PWMSparkMax m_shooterMotor = new PWMSparkMax(Constants.ShooterConstants.kShooterMotorPort);
 
   /** Creates a new Shooter. */
   public Shooter() {

@@ -14,11 +14,11 @@ package frc.robot;
  */
 public final class Constants {
     public static final class DriveConstants {
-        public static final int kLeftMotorPort = 1;
-        public static final int kRightMotorPort = 2;
+        public static final int kLeftMotorPort = 0;
+        public static final int kRightMotorPort = 1;
     }
 
     public static final class ShooterConstants {
-        public static final int kShooterMotorPort = 0;
+        public static final int kShooterMotorPort = 2;
     }
 }

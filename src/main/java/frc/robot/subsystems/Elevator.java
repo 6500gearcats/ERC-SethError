@@ -5,14 +5,14 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.motorcontrol.Spark;
+import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class Elevator extends SubsystemBase {
   /** Creates a new Elevator. */
   //TODO: Get the right port for the elevator and switch
-  public Spark m_motor = new Spark(0);
+  public PWMSparkMax m_motor = new PWMSparkMax(0);
   public DigitalInput m_switch = new DigitalInput(0);
   
   public Elevator() {}

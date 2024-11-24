@@ -52,8 +52,16 @@ public class RobotContainer {
     new JoystickButton(m_controller, XboxController.Button.kA.value).whileTrue(new ShootCube(m_shooter, 0.5));
     new JoystickButton(m_controller, XboxController.Button.kY.value).whileTrue(new ShootCube(m_shooter, -0.5));
     // Current test multiplier is in place to prevent the elevator from moving too fast
-    new Trigger(() -> m_controller.getRightTriggerAxis() > 0.2).whileTrue(new MoveElevator(m_elevator, m_controller.getRightTriggerAxis() * 0.2));
-    new Trigger(() -> m_controller.getLeftTriggerAxis() > 0.2).whileTrue(new MoveElevator(m_elevator, m_controller.getLeftTriggerAxis() * -0.2));
+    new Trigger(() -> m_controller.getRightTriggerAxis() > 0.2).whileTrue(new MoveElevator(m_elevator, m_controller.getRightTriggerAxis() * 0.2, -1.0));
+    new Trigger(() -> m_controller.getLeftTriggerAxis() > 0.2).whileTrue(new MoveElevator(m_elevator, m_controller.getLeftTriggerAxis() * -0.2, -1.0));
+
+    // Buttons to configure elevator presets
+    //TODO: Add the correct end positions for the elevator presets
+    new JoystickButton(m_controller, XboxController.Button.kLeftBumper.value).whileTrue(new MoveElevator(m_elevator, 0.5, 0));
+    new JoystickButton(m_controller, XboxController.Button.kRightBumper.value).whileTrue(new MoveElevator(m_elevator, 0.5, 0));
+    new JoystickButton(m_controller, XboxController.Button.kB.value).whileTrue(new MoveElevator(m_elevator, 0.5, 0));
+    new JoystickButton(m_controller, XboxController.Button.kA.value).whileTrue(new MoveElevator(m_elevator, 0.5, 0));
+    new JoystickButton(m_controller, XboxController.Button.kX.value).whileTrue(new MoveElevator(m_elevator, 0.5, 0));
   }
 
   /**

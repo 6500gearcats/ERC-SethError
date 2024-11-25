@@ -26,7 +26,7 @@ public class Autonomous extends SequentialCommandGroup {
 
       // Move the elevator back down and turn around at the same time
         new ParallelDeadlineGroup(new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, 0.5), theRomiDrivetrain),
-            new MoveElevator(theElevator, -1, /* TODO: Add correct end position value */0)).withTimeout(2),
+            new ElevatorPreset(theElevator, 5),
 
       // Run forward out of the robots zone
         new RunCommand(() -> theRomiDrivetrain.arcadeDrive(1,0)).withTimeout(2),
@@ -36,7 +36,7 @@ public class Autonomous extends SequentialCommandGroup {
 
       // Runs the robot forward and runs the intake
         new ParallelDeadlineGroup(new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, 0.5), theRomiDrivetrain),
-            new ShootCube(theShooter, -1))
+            new ShootCube(theShooter, -1)))
 
     );
 

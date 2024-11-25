@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.ElevatorPreset;
 import frc.robot.commands.MoveElevator;
 import frc.robot.commands.ShootCube;
 import frc.robot.subsystems.Elevator;
@@ -52,16 +53,19 @@ public class RobotContainer {
     new JoystickButton(m_controller, XboxController.Button.kA.value).whileTrue(new ShootCube(m_shooter, 0.5));
     new JoystickButton(m_controller, XboxController.Button.kY.value).whileTrue(new ShootCube(m_shooter, -0.5));
     // Current test multiplier is in place to prevent the elevator from moving too fast
-    new Trigger(() -> m_controller.getRightTriggerAxis() > 0.2).whileTrue(new MoveElevator(m_elevator, m_controller.getRightTriggerAxis() * 0.2, -1.0));
-    new Trigger(() -> m_controller.getLeftTriggerAxis() > 0.2).whileTrue(new MoveElevator(m_elevator, m_controller.getLeftTriggerAxis() * -0.2, -1.0));
+    new Trigger(() -> m_controller.getRightTriggerAxis() > 0.2).whileTrue(new MoveElevator(m_elevator, m_controller.getRightTriggerAxis() * 0.2));
+    new Trigger(() -> m_controller.getLeftTriggerAxis() > 0.2).whileTrue(new MoveElevator(m_elevator, m_controller.getLeftTriggerAxis() * -0.2));
 
     // Buttons to configure elevator presets
-    //TODO: Add the correct end positions for the elevator presets
-    new JoystickButton(m_controller, XboxController.Button.kLeftBumper.value).whileTrue(new MoveElevator(m_elevator, 0.5, 0));
-    new JoystickButton(m_controller, XboxController.Button.kRightBumper.value).whileTrue(new MoveElevator(m_elevator, 0.5, 0));
-    new JoystickButton(m_controller, XboxController.Button.kB.value).whileTrue(new MoveElevator(m_elevator, 0.5, 0));
-    new JoystickButton(m_controller, XboxController.Button.kA.value).whileTrue(new MoveElevator(m_elevator, 0.5, 0));
-    new JoystickButton(m_controller, XboxController.Button.kX.value).whileTrue(new MoveElevator(m_elevator, 0.5, 0));
+    //TODO: Add the correct end time for the elevator presets
+    //TODO: Add a way to keep the elevator in the preset position instead of going back down to default position
+    new JoystickButton(m_controller, XboxController.Button.kLeftBumper.value).whileTrue(new ElevatorPreset(m_elevator, 12.0));
+    //add a way to go down in preset class
+    new JoystickButton(m_controller, XboxController.Button.kRightBumper.value).whileTrue(new ElevatorPreset(m_elevator, 12.0, true));
+
+    new JoystickButton(m_controller, XboxController.Button.kB.value).whileTrue(new ElevatorPreset(m_elevator, 5.0));
+    new JoystickButton(m_controller, XboxController.Button.kA.value).whileTrue(new ElevatorPreset(m_elevator, 7.0));
+    new JoystickButton(m_controller, XboxController.Button.kX.value).whileTrue(new ElevatorPreset(m_elevator, 9.0));
   }
 
   /**

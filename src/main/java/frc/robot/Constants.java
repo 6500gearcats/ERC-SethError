@@ -18,6 +18,7 @@ public final class Constants {
         public static final int kRightMotorPort = 1;
 
         public static final double defaultTurnSpeed = 0.5;
+        public static final double defaultElevatorSpeed = 0.5;
     }
 
     public static final class ShooterConstants {

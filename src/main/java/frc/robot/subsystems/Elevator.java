@@ -5,7 +5,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -13,15 +12,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Elevator extends SubsystemBase {
   /** Creates a new Elevator. */
   //TODO: Get the right port for the elevator and switch
-  public PWMSparkMax m_motor = new PWMSparkMax(0);
-  public DigitalInput m_switch = new DigitalInput(0);
+  private PWMSparkMax m_motor = new PWMSparkMax(0);
+  private DigitalInput m_switch = new DigitalInput(0);
 
-  //TODO: Add encoder to find position and change ports
-  private Encoder m_encoder = new Encoder(0, 1);
   
   public Elevator() {
-    //TODO: Set distance per pulse to the correct value
-    m_encoder.setDistancePerPulse(0.00003836);
   }
 
   @Override
@@ -36,8 +31,5 @@ public class Elevator extends SubsystemBase {
   public boolean getSwitch() {
     return m_switch.get();
   }
-
-  public double getPosition(){
-    return m_encoder.getDistance();
-  }
+  
 }

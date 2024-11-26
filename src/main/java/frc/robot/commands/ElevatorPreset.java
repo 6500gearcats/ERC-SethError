@@ -10,27 +10,28 @@ import frc.robot.Constants;
 import frc.robot.subsystems.Elevator;
 
 public class ElevatorPreset extends Command {
-  Elevator m_elevator; 
-  double m_speed = Constants.DriveConstants.defaultElevatorSpeed; 
+  Elevator m_elevator;
+  double m_speed = Constants.DriveConstants.defaultElevatorSpeed;
   double m_time;
   boolean m_down;
   Timer m_currentTimer = new Timer();
+
   /** Creates a new ElevatorPreset. */
   public ElevatorPreset(Elevator theElevator, double theTime) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_elevator = theElevator;
     m_time = theTime;
     m_down = false;
-    
+
     addRequirements(m_elevator);
   }
-  
+
   public ElevatorPreset(Elevator theElevator, double theTime, boolean down) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_elevator = theElevator;
     m_time = theTime;
     m_down = down;
-    
+
     addRequirements(m_elevator);
   }
 
@@ -44,9 +45,9 @@ public class ElevatorPreset extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_elevator.setSpeed(m_speed);
-
-    if (m_down) {
+    if (!m_down) {
+      m_elevator.setSpeed(m_speed);
+    } else {
       m_elevator.setSpeed(-m_speed);
     }
   }

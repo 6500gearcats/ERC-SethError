@@ -36,7 +36,7 @@ public class RobotContainer {
    */
   public RobotContainer() {
     m_romiDrivetrain.setDefaultCommand(new RunCommand(
-        () -> m_romiDrivetrain.arcadeDrive(m_controller.getLeftY(), m_controller.getRightX()), m_romiDrivetrain));
+        () -> m_romiDrivetrain.arcadeDrive(m_controller.getLeftY(), m_controller.getLeftX()), m_romiDrivetrain));
     configureButtonBindings();
   }
 
@@ -53,8 +53,7 @@ public class RobotContainer {
     new JoystickButton(m_controller, XboxController.Button.kA.value).whileTrue(new ShootCube(m_shooter, 0.5));
     new JoystickButton(m_controller, XboxController.Button.kY.value).whileTrue(new ShootCube(m_shooter, -0.5));
     // Current test multiplier is in place to prevent the elevator from moving too fast
-    new Trigger(() -> m_controller.getRightTriggerAxis() > 0.2).whileTrue(new MoveElevator(m_elevator, m_controller.getRightTriggerAxis() * 0.2));
-    new Trigger(() -> m_controller.getLeftTriggerAxis() > 0.2).whileTrue(new MoveElevator(m_elevator, m_controller.getLeftTriggerAxis() * -0.2));
+    new Trigger(() -> m_controller.getRightY() > 0.2).whileTrue(new MoveElevator(m_elevator, m_controller.getRightY() * 0.2));
 
     // Buttons to configure elevator presets
     //TODO: Add the correct end time for the elevator presets
@@ -63,9 +62,9 @@ public class RobotContainer {
     //add a way to go down in preset class
     new JoystickButton(m_controller, XboxController.Button.kRightBumper.value).whileTrue(new ElevatorPreset(m_elevator, 12.0, true));
 
-    new JoystickButton(m_controller, XboxController.Button.kB.value).whileTrue(new ElevatorPreset(m_elevator, 5.0));
-    new JoystickButton(m_controller, XboxController.Button.kA.value).whileTrue(new ElevatorPreset(m_elevator, 7.0));
-    new JoystickButton(m_controller, XboxController.Button.kX.value).whileTrue(new ElevatorPreset(m_elevator, 9.0));
+    // new JoystickButton(m_controller, XboxController.Button.kX.value).whileTrue(new ElevatorPreset(m_elevator, 5.0));
+    // new JoystickButton(m_controller, XboxController.Button.kA.value).whileTrue(new ElevatorPreset(m_elevator, 7.0));
+    // new JoystickButton(m_controller, XboxController.Button.kB.value).whileTrue(new ElevatorPreset(m_elevator, 9.0));
   }
 
   /**

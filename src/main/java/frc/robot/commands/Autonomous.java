@@ -35,7 +35,8 @@ public class Autonomous extends SequentialCommandGroup {
         new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, .5), theRomiDrivetrain).withTimeout(2),
 
       // Runs the robot forward and runs the intake
-        new ParallelDeadlineGroup(new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, 0.5), theRomiDrivetrain),
+      //! Pranav & Asher - Change the values to move the robot forward instead of turning
+        new ParallelDeadlineGroup(new RunCommand(() -> theRomiDrivetrain.arcadeDrive(1, 0), theRomiDrivetrain),
             new ShootCube(theShooter, -1)),
 
       // Turn to the left

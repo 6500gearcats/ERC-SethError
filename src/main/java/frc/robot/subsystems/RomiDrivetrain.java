@@ -18,8 +18,6 @@ public class RomiDrivetrain extends SubsystemBase {
   private final PWMSparkMax m_leftMotor = new PWMSparkMax(Constants.DriveConstants.kLeftMotorPort);
   private final PWMSparkMax m_rightMotor = new PWMSparkMax(Constants.DriveConstants.kRightMotorPort);
 
-  // The Romi has onboard encoders that are hardcoded
-  // to use DIO pins 4/5 and 6/7 for the left and right
 
   // Set up the differential drive controller
   private final DifferentialDrive m_diffDrive =

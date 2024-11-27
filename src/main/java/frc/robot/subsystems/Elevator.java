@@ -4,32 +4,28 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 
 public class Elevator extends SubsystemBase {
   /** Creates a new Elevator. */
-  //TODO: Get the right port for the elevator and switch
-  private PWMSparkMax m_motor = new PWMSparkMax(0);
-  private DigitalInput m_switch = new DigitalInput(0);
+  private PWMSparkMax m_motor = new PWMSparkMax(Constants.ElevatorConstants.kElevatorMotorPort);
+  private double m_outputSpeed = 0.0;
 
   
-  public Elevator() {
-  }
+  public Elevator() {}
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Elevator Speed", m_outputSpeed);
   }
 
   public void setSpeed(double speed) {
     m_motor.set(speed);
-  }
-
-  public boolean getSwitch() {
-    return m_switch.get();
+    m_outputSpeed = speed;
   }
   
 }

@@ -35,4 +35,10 @@ public class MoveElevator extends Command {
   public void end(boolean interrupted) {
     m_elevator.setSpeed(0);
   }
+
+  @Override
+  public boolean isFinished()
+  {
+    return false;
+  }
 }

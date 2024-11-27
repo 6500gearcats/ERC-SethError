@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -12,17 +13,20 @@ import frc.robot.Constants;
 public class Elevator extends SubsystemBase {
   /** Creates a new Elevator. */
   //TODO: Get the right port for the elevator and switch
-  public PWMSparkMax m_motor = new PWMSparkMax(Constants.ElevatorConstants.kElevatorMotorPort);
+  private PWMSparkMax m_motor = new PWMSparkMax(Constants.ElevatorConstants.kElevatorMotorPort);
+  private double m_outputSpeed = 0.0;
   
   public Elevator() {}
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Elevator Speed", m_outputSpeed);
   }
 
   public void setSpeed(double speed) {
     m_motor.set(speed);
+    m_outputSpeed = speed;
   }
 
 }

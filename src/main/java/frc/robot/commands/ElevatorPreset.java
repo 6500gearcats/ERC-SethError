@@ -11,7 +11,7 @@ import frc.robot.subsystems.Elevator;
 
 public class ElevatorPreset extends Command {
   Elevator m_elevator;
-  double m_speed = Constants.DriveConstants.defaultElevatorSpeed;
+  double m_speed = Constants.ElevatorConstants.defaultElevatorSpeed;
   double m_time;
   boolean m_down;
   Timer m_currentTimer = new Timer();

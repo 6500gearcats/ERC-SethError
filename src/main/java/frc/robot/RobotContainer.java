@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ElevatorPreset;
+import frc.robot.commands.GoTurbo;
 import frc.robot.commands.MoveElevator;
 import frc.robot.commands.ShootCube;
 import frc.robot.subsystems.Elevator;
@@ -61,6 +62,9 @@ public class RobotContainer {
     new JoystickButton(m_controller, XboxController.Button.kLeftBumper.value).whileTrue(new ElevatorPreset(m_elevator, 12.0));
     //add a way to go down in preset class
     new JoystickButton(m_controller, XboxController.Button.kRightBumper.value).whileTrue(new ElevatorPreset(m_elevator, 12.0, true));
+
+    // Added a turbo button
+    new Trigger( ()-> m_controller.getRightTriggerAxis() > 0.2).whileTrue(new GoTurbo(m_romiDrivetrain));
 
     // new JoystickButton(m_controller, XboxController.Button.kX.value).whileTrue(new ElevatorPreset(m_elevator, 5.0));
     // new JoystickButton(m_controller, XboxController.Button.kA.value).whileTrue(new ElevatorPreset(m_elevator, 7.0));

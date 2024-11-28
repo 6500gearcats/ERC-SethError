@@ -16,7 +16,6 @@ public class GoTurbo extends Command {
   @Override
   public void initialize() {
     RomiDrivetrain.turboActive = true;
-    SmartDashboard.putBoolean("Turbo", true);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -27,7 +26,6 @@ public class GoTurbo extends Command {
   @Override
   public void end(boolean interrupted) {
     RomiDrivetrain.turboActive = false;
-    SmartDashboard.putBoolean("Turbo", false);
   }
 
   // Returns true when the command should end.

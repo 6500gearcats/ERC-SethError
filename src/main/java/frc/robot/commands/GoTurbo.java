@@ -9,8 +9,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.RomiDrivetrain;
 
 public class GoTurbo extends Command {
-  private RomiDrivetrain m_drivetrain;
-
   /** Creates a new GoTurbo. */
   public GoTurbo() {}
 

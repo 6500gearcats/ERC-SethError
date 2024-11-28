@@ -8,6 +8,7 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "bin/": true,
+    "build/": true,
     "**/.classpath": true,
     "**/.project": true,
     "**/.settings": true,
@@ -21,10 +22,11 @@
       "workingDirectory": "${workspaceFolder}/build/jni/release",
       "vmargs": [ "-Djava.library.path=${workspaceFolder}/build/jni/release" ],
       "env": {
-        "LD_LIBRARY_PATH": "${workspaceFolder}/build/jni/release" ,
+        "LD_LIBRARY_PATH": "${workspaceFolder}/build/jni/release",
         "DYLD_LIBRARY_PATH": "${workspaceFolder}/build/jni/release"
       }
-    },
+    }
   ],
-  "java.test.defaultConfig": "WPIlibUnitTests"
+  "java.test.defaultConfig": "WPIlibUnitTests",
+  "java.jdt.ls.vmargs": "-Xms512m -Xmx2g"
 }

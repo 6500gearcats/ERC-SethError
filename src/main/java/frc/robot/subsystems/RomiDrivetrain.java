@@ -19,7 +19,7 @@ public class RomiDrivetrain extends SubsystemBase {
   private final PWMSparkMax m_leftMotor = new PWMSparkMax(Constants.DriveConstants.kLeftMotorPort);
   private final PWMSparkMax m_rightMotor = new PWMSparkMax(Constants.DriveConstants.kRightMotorPort);
 
-  public static boolean turboActive;
+  public static boolean turboActive = false;
 
 
   // Set up the differential drive controller

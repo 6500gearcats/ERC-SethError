@@ -19,6 +19,9 @@ public final class Constants {
         public static final int kLeftMotorPort = 0;
         public static final int kRightMotorPort = 1;
 
+        //TODO: check if the modifier should be 5
+        public static final double KTurboModifier = 5;
+
         public static final double defaultTurnSpeed = 0.5;
     }
 

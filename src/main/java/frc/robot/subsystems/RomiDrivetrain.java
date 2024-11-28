@@ -18,6 +18,8 @@ public class RomiDrivetrain extends SubsystemBase {
   private final PWMSparkMax m_leftMotor = new PWMSparkMax(Constants.DriveConstants.kLeftMotorPort);
   private final PWMSparkMax m_rightMotor = new PWMSparkMax(Constants.DriveConstants.kRightMotorPort);
 
+  public static boolean turboActive;
+
 
   // Set up the differential drive controller
   private final DifferentialDrive m_diffDrive =
@@ -30,6 +32,12 @@ public class RomiDrivetrain extends SubsystemBase {
   }
 
   public void arcadeDrive(double xaxisSpeed, double zaxisRotate) {
+
+    if(turboActive) {
+      xaxisSpeed *= Constants.DriveConstants.KTurboModifier;
+      zaxisRotate *= Constants.DriveConstants.KTurboModifier; 
+    }
+
     m_diffDrive.arcadeDrive(xaxisSpeed, zaxisRotate);
   }
 

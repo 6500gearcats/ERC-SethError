@@ -10,35 +10,26 @@ import frc.robot.subsystems.RomiDrivetrain;
 
 public class GoTurbo extends Command {
   private RomiDrivetrain m_drivetrain;
-  private boolean turboActive = false;
 
   /** Creates a new GoTurbo. */
-  public GoTurbo(RomiDrivetrain theDrivetrain) {
-    // Use addRequirements() here to declare subsystem dependencies.
-    m_drivetrain = theDrivetrain;
-
-    addRequirements(m_drivetrain);
-  }
+  public GoTurbo() {}
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    turboActive = true;
-    SmartDashboard.putBoolean("Turbo", turboActive);
+    RomiDrivetrain.turboActive = true;
+    SmartDashboard.putBoolean("Turbo", true);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    m_drivetrain.arcadeDrive(1, 0);
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_drivetrain.arcadeDrive(0, 0);
-    turboActive = false;
-    SmartDashboard.putBoolean("Turbo", turboActive);
+    RomiDrivetrain.turboActive = false;
+    SmartDashboard.putBoolean("Turbo", false);
   }
 
   // Returns true when the command should end.

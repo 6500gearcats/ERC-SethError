@@ -64,7 +64,7 @@ public class RobotContainer {
     new JoystickButton(m_controller, XboxController.Button.kRightBumper.value).whileTrue(new ElevatorPreset(m_elevator, 12.0, true));
 
     // Added a turbo button
-    new Trigger( ()-> Math.abs(m_controller.getRightTriggerAxis()) > 0.2).whileTrue(new GoTurbo(m_romiDrivetrain));
+    new Trigger( ()-> Math.abs(m_controller.getRightTriggerAxis()) > 0.2).whileTrue(new GoTurbo());
 
     // new JoystickButton(m_controller, XboxController.Button.kX.value).whileTrue(new ElevatorPreset(m_elevator, 5.0));
     // new JoystickButton(m_controller, XboxController.Button.kA.value).whileTrue(new ElevatorPreset(m_elevator, 7.0));

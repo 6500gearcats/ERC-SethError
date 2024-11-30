@@ -4,6 +4,8 @@
 
 package frc.robot.commands;
 
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Elevator;
 
@@ -11,9 +13,11 @@ import frc.robot.subsystems.Elevator;
 public class MoveElevator extends Command {
   /** Creates a new MoveElevator. */
   public Elevator m_elevator;
-  public double m_speed;
+  public DoubleSupplier m_speed;
 
-  public MoveElevator(Elevator theElevator, double speed) {
+  public MoveElevator(Elevator theElevator, DoubleSupplier speed) {
+    //Added a DoubleSupplier to the MoveElevator so it can get continuous input from the controller instead of getting the first static value 
+
     // Use addRequirements() here to declare subsystem dependencies.
     m_elevator = theElevator;
     m_speed = speed;
@@ -27,12 +31,17 @@ public class MoveElevator extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_elevator.setSpeed(m_speed);
+    m_elevator.setSpeed(m_speed.getAsDouble());
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     m_elevator.setSpeed(0);
+  }
+
+  @Override
+  public boolean isFinished() {
+    return false;
   }
 }

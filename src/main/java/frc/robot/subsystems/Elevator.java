@@ -12,7 +12,7 @@ import frc.robot.Constants;
 public class Elevator extends SubsystemBase {
   /** Creates a new Elevator. */
   //TODO: Get the right port for the elevator and switch
-  public PWMSparkMax m_motor = new PWMSparkMax(Constants.ElevatorConstants.kElevatorMotorPort);
+  private PWMSparkMax m_elevatorMotor = new PWMSparkMax(Constants.ElevatorConstants.kElevatorMotorPort);
   
   public Elevator() {}
 
@@ -22,7 +22,7 @@ public class Elevator extends SubsystemBase {
   }
 
   public void setSpeed(double speed) {
-    m_motor.set(speed);
+    m_elevatorMotor.set(speed);
   }
 
 }

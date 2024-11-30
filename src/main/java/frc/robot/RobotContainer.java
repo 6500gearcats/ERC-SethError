@@ -29,7 +29,7 @@ public class RobotContainer {
   private final RomiDrivetrain m_romiDrivetrain = new RomiDrivetrain();
   private final XboxController m_controller = new XboxController(0);
 
-  private final PS4Controller m_temp = new PS4Controller(0);
+  //private final PS4Controller m_temp = new PS4Controller(0);
 
   private final Elevator m_elevator = new Elevator();
   private final Shooter m_shooter = new Shooter();
@@ -63,7 +63,7 @@ public class RobotContainer {
     // Current test multiplier is in place to prevent the elevator from moving too fast
 
     //Added a DoubleSupplier to the MoveElevator so it can get continuous input from the controller instead of getting the first static value 
-    new Trigger(() -> m_controller.getRightY() > 0.2).whileTrue(new MoveElevator(m_elevator, () -> m_controller.getRightY() * -0.8));
+    new Trigger(() -> Math.abs(m_controller.getRightY()) > 0.2).whileTrue(new MoveElevator(m_elevator, () -> m_controller.getRightY() * -0.8));
 
 
 

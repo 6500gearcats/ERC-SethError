@@ -39,6 +39,7 @@ public class RobotContainer {
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
+    m_elevator.setDefaultCommand(new RunCommand(() -> new MoveElevator(m_elevator, () -> -0.1), m_elevator));
      m_romiDrivetrain.setDefaultCommand(
         // The left stick controls translation of the robot.
         // Turning is controlled by the X axis of the right stick.
@@ -69,7 +70,7 @@ public class RobotContainer {
     // Current test multiplier is in place to prevent the elevator from moving too fast
 
     //Added a DoubleSupplier to the MoveElevator so it can get continuous input from the controller instead of getting the first static value 
-    new Trigger(() -> Math.abs(m_controller.getRightY()) > 0.8).whileTrue(new MoveElevator(m_elevator, () -> m_controller.getRightY() * -0.2));
+    new Trigger(() -> Math.abs(m_controller.getRightY()) > 0.8).whileTrue(new MoveElevator(m_elevator, () -> m_controller.getRightY() * 0.2));
 
 
 

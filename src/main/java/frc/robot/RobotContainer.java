@@ -7,10 +7,12 @@ package frc.robot;
 import edu.wpi.first.math.MathUtil;
 //import edu.wpi.first.wpilibj.PS4Controller;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.Autonomous;
 import frc.robot.commands.MoveElevator;
 import frc.robot.commands.ShootCube;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.RomiDrivetrain;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -89,5 +91,9 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
+
+   public Command getAutonomousCommand() {
+    return new Autonomous(m_elevator, m_romiDrivetrain, m_shooter);
+   }
 
 }

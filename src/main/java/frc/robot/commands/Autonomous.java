@@ -22,27 +22,28 @@ public class Autonomous extends SequentialCommandGroup {
       // TODO: Add Real Numbers
 
       // Shoot the cube to the research station
-        new ShootCube(theShooter, 1).withTimeout(1),
+        new ShootCube(theShooter, -1).withTimeout(1),
 
-      // Move the elevator back down and turn around at the same time
-        new ParallelDeadlineGroup(new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, 0.5), theRomiDrivetrain),
-            new MoveElevator(theElevator, () -> -1)).withTimeout(2),
+      // // Move the elevator back down and turn around at the same time
+        new MoveElevator(theElevator, () -> 0.2).withTimeout(3),
+        new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, 0.625), theRomiDrivetrain).withTimeout(2.5),//,
+      
 
-      // Run forward out of the robots zone
-        new RunCommand(() -> theRomiDrivetrain.arcadeDrive(1,0)).withTimeout(2),
+      // // Run forward out of the robots zone
+         new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0.4,-.1)).withTimeout(3)
 
-      // Turn to the left
-        new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, .5), theRomiDrivetrain).withTimeout(2),
+      // // Turn to the left
+      //   new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, .5), theRomiDrivetrain).withTimeout(2),
 
-      // Runs the robot forward and runs the intake
-        new ParallelDeadlineGroup(new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, 0.5), theRomiDrivetrain),
-            new ShootCube(theShooter, -1)),
+      // // Runs the robot forward and runs the intake
+      //   new ParallelDeadlineGroup(new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, 0.5), theRomiDrivetrain),
+      //       new ShootCube(theShooter, -1)),
 
-      // Turn to the left
-        new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, .5), theRomiDrivetrain).withTimeout(2),
+      // // Turn to the left
+      //   new RunCommand(() -> theRomiDrivetrain.arcadeDrive(0, .5), theRomiDrivetrain).withTimeout(2),
 
-        // Shoot the cube to the team's side
-        new ShootCube(theShooter, 1).withTimeout(1)
+      //   // Shoot the cube to the team's side
+      //   new ShootCube(theShooter, 1).withTimeout(1)
     );
 
   }

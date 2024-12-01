@@ -31,13 +31,18 @@ public class MoveElevator extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_elevator.setSpeed(m_speed.getAsDouble());
+    if(m_speed.getAsDouble() == 0 ) {
+      m_elevator.setSpeed(-0.1);
+    }
+    else {
+     m_elevator.setSpeed(m_speed.getAsDouble());
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_elevator.setSpeed(0);
+    m_elevator.setSpeed(.02);
   }
 
   @Override

@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class RomiDrivetrain extends SubsystemBase {
-  private final RomiGyro m_gyro = new RomiGyro();
+  //private final RomiGyro m_gyro = new RomiGyro();
 
   // The Romi has the left and right motors set to
   // PWM channels 0 and 1 respectively
@@ -44,36 +44,36 @@ public class RomiDrivetrain extends SubsystemBase {
    *
    * @return The current angle of the Romi in degrees
    */
-  public double getGyroAngleX() {
+  /*public double getGyroAngleX() {
     return m_gyro.getAngleX();
-  }
+  }*/
 
   /**
    * Current angle of the Romi around the Y-axis.
    *
    * @return The current angle of the Romi in degrees
    */
-  public double getGyroAngleY() {
+  /*public double getGyroAngleY() {
     return m_gyro.getAngleY();
-  }
+  }*/
 
   /**
    * Current angle of the Romi around the Z-axis.
    *
    * @return The current angle of the Romi in degrees
    */
-  public double getGyroAngleZ() {
+  /*public double getGyroAngleZ() {
     return m_gyro.getAngleZ();
-  }
+  }*/
 
   /** Reset the gyro. */
-  public void resetGyro() {
+  /*public void resetGyro() {
     m_gyro.reset();
-  }
+  }*/
 
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("Gyro Angle", m_gyro.getAngleZ());
+    //SmartDashboard.putNumber("Gyro Angle", m_gyro.getAngleZ());
   }
 
   @Override

@@ -35,7 +35,7 @@ public class RomiDrivetrain extends SubsystemBase {
       m_diffDrive.arcadeDrive(xaxisSpeed, -0.1);
     }
     else {
-      m_diffDrive.arcadeDrive(xaxisSpeed, zaxisRotate);
+      m_diffDrive.arcadeDrive(xaxisSpeed, zaxisRotate -.1);
     }
   }
 

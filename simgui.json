@@ -11,6 +11,13 @@
       "/FMSInfo": "FMSInfo"
     }
   },
+  "NetworkTables": {
+    "transitory": {
+      "SmartDashboard": {
+        "open": true
+      }
+    }
+  },
   "NetworkTables Info": {
     "Clients": {
       "open": true

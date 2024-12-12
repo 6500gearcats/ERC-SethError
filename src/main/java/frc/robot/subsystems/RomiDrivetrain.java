@@ -32,10 +32,10 @@ public class RomiDrivetrain extends SubsystemBase {
 
   public void arcadeDrive(double xaxisSpeed, double zaxisRotate) {
     if (zaxisRotate == 0) {
-      m_diffDrive.arcadeDrive(xaxisSpeed, -0.1);
+      m_diffDrive.arcadeDrive(xaxisSpeed, -0.2);
     }
     else {
-      m_diffDrive.arcadeDrive(xaxisSpeed, zaxisRotate -.1);
+      m_diffDrive.arcadeDrive(xaxisSpeed, zaxisRotate -.2);
     }
   }
 

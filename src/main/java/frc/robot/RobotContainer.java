@@ -47,8 +47,8 @@ public class RobotContainer {
         // Turning is controlled by the X axis of the right stick.
         new RunCommand(
             () -> m_romiDrivetrain.arcadeDrive(
-                MathUtil.applyDeadband(-m_controller.getLeftY() * 0.5, 0.05), //0.1
-                MathUtil.applyDeadband(-m_controller.getLeftX() * 0.5, 0.05)), m_romiDrivetrain)); //0.1)));
+                MathUtil.applyDeadband(-m_controller.getLeftY(), 0.05), //0.1
+                MathUtil.applyDeadband(-m_controller.getLeftX(), 0.05)), m_romiDrivetrain)); //0.1)));
 
     // m_romiDrivetrain.setDefaultCommand(new RunCommand(
     //     () -> m_romiDrivetrain.arcadeDrive(m_temp.getLeftY() * -1, m_temp.getLeftX() * -1), m_romiDrivetrain));
@@ -72,7 +72,7 @@ public class RobotContainer {
     // Current test multiplier is in place to prevent the elevator from moving too fast
 
     //Added a DoubleSupplier to the MoveElevator so it can get continuous input from the controller instead of getting the first static value 
-    new Trigger(() -> Math.abs(m_controller.getRightY()) > 0.8).whileTrue(new MoveElevator(m_elevator, () -> m_controller.getRightY() * 0.2));
+    new Trigger(() -> Math.abs(m_controller.getRightY()) > 0.8).whileTrue(new MoveElevator(m_elevator, () -> m_controller.getRightY() * 0.3));
 
 
 
